@@ -1,0 +1,6 @@
+{
+  "name": "ZenTasks",
+  "description": "Aplicación de gestión de tareas y enfoque diario con modo oscuro, prioridades y métricas",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* =====================================================
+   VARIABLES DE COLOR — Sistema de temas claro/oscuro
+   Modo oscuro es el predeterminado (data-theme="dark")
+   ===================================================== */
+@layer base {
+
+  /* --- TEMA OSCURO (predeterminado) --- */
+  :root,
+  [data-theme="dark"] {
+    color-scheme: dark;
+
+    /* Fondos */
+    --bg:                 #111417;   /* fondo de página */
+    --surface:            #191c1f;   /* tarjetas, secciones */
+    --surface-alt:        #14171a;   /* tarjetas internas, preview */
+    --surface-subtle:     #15171a;   /* estado completado, badges */
+    --surface-input:      #111417;   /* inputs */
+    --surface-input-focus:#161a1e;   /* input con foco */
+    --surface-btn:        #252a32;   /* botón secundario */
+    --surface-btn-hover:  #303640;   /* botón secundario hover */
+    --surface-action:     #262c35;   /* hover de botones de acción pequeños */
+    --surface-icon:       #20242a;   /* contenedor de iconos (estado vacío) */
+    --surface-hover:      #212529;   /* hover tarjeta tarea */
+    --surface-hover-border: #23231e; /* hover tarjeta prioridad alta */
+
+    /* Prioridad alta (fondo especial) */
+    --priority-high-bg:   #1e1e1b;
+    --priority-high-hover:#23231e;
+
+    /* Bordes */
+    --border:             #2e343d;   /* borde principal */
+    --border-subtle:      #252a32;   /* borde sutil */
+    --border-alt:         #242930;   /* borde alternativo */
+    --border-strong:      #3b424e;   /* borde hover/fuerte */
+    --border-checkbox:    #3e4652;   /* borde checkbox */
+
+    /* Texto */
+    --text:               #f0f3f6;   /* texto principal */
+    --text-muted:         #9da7b3;   /* texto secundario */
+    --text-dim:           #677890;   /* texto atenuado */
+
+    /* Overlay modal — siempre oscuro */
+    --overlay:            rgba(12, 14, 17, 0.80);
+
+    /* Acento (igual en ambos temas) */
+    --accent:             #477ab1;
+    --accent-hover:       #568ec9;
+    --gold:               #ca963e;
+  }
+
+  /* --- TEMA CLARO --- */
+  [data-theme="light"] {
+    color-scheme: light;
+
+    /* Fondos */
+    --bg:                 #f0f4f8;
+    --surface:            #ffffff;
+    --surface-alt:        #f8fafc;
+    --surface-subtle:     #f1f5f9;
+    --surface-input:      #f1f5f9;
+    --surface-input-focus:#e8f0fa;
+    --surface-btn:        #e8edf5;
+    --surface-btn-hover:  #d4dce8;
+    --surface-action:     #dde4ef;
+    --surface-icon:       #e2e8f0;
+    --surface-hover:      #f1f5f9;
+    --surface-hover-border:#fef3c7;
+
+    /* Prioridad alta */
+    --priority-high-bg:   #fffbeb;
+    --priority-high-hover:#fef3c7;
+
+    /* Bordes */
+    --border:             #e2e8f0;
+    --border-subtle:      #e2e8f0;
+    --border-alt:         #dde4ef;
+    --border-strong:      #94a3b8;
+    --border-checkbox:    #94a3b8;
+
+    /* Texto */
+    --text:               #1e293b;
+    --text-muted:         #64748b;
+    --text-dim:           #94a3b8;
+
+    /* Overlay modal — siempre oscuro */
+    --overlay:            rgba(12, 14, 17, 0.75);
+
+    /* Acento (igual en ambos temas) */
+    --accent:             #477ab1;
+    --accent-hover:       #568ec9;
+    --gold:               #ca963e;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    /* Transición suave al cambiar de tema */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* =====================================================
+   TOGGLE DE TEMA — animación del switch deslizante
+   ===================================================== */
+
+/* Transición global para el cambio de tema */
+* {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* Excluir transiciones en animaciones explícitas y transformaciones */
+*:where([class*="animate-"]),
+*:where([class*="transition-"]) {
+  transition-property: all;
+}
